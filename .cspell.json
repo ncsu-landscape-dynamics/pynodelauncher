@@ -29,6 +29,7 @@
     "htmlcov",
     "ipynb",
     "ipython",
+    "libopenmpi",
     "mkdocs",
     "mypy",
     "nosetests",
