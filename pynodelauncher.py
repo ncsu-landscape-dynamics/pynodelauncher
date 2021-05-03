@@ -83,12 +83,12 @@ def main():
             print(f"Sent quit to PE {i}")
     else:
         while True:
-            # Other processors recieve inputs from proc0
+            # Other processors receive inputs from proc0
             command = comm.recv(source=0, tag=0)
             if command == "QUIT":
                 break
-            completed_procees = subprocess.run(command, shell=True, check=False)
-            result = completed_procees.returncode
+            completed_process = subprocess.run(command, shell=True, check=False)
+            result = completed_process.returncode
             if debug:
                 print(f"Called command from: {rank}")
                 print(f"The command was: {command}")
