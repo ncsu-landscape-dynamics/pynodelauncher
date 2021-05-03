@@ -1,4 +1,4 @@
-# This workflow installs sytem and Python dependencies, installs the package, runs tests,
+# This workflow installs system and Python dependencies, installs the package, runs tests,
 # and lints with a variety of Python versions.
 
 name: Python package

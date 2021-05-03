@@ -1,6 +1,21 @@
 # pynodelauncher
 
-Launch pleasantly parallel tasks on multiple nodes
+The *pynodelauncher* tool launches pleasantly parallel tasks on multiple nodes
+on a HPC cluster.
+
+It is using MPI through the *mpi4py* package which in turn is using system MPI library.
+A task can be any command, typically a call of a script with a series of parameters.
+
+## Installation
+
+Use *pip* to install *pynodelauncher*:
+
+```sh
+python -m pip install git+https://github.com/ncsu-landscape-dynamics/pynodelauncher.git
+```
+
+This will also install the *mpi4py* package (again using pip) if it is not already
+installed (using pip or in any other way).
 
 ## Authors
 
