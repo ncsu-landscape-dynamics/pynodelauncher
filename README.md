@@ -29,7 +29,7 @@ conda deactivate
 ```
 
 Replace `/path/to/env` by the path to conda environment you are using or
-the whole `conda activate ...` by a module load sets up a conda environment. 
+the whole `conda activate ...` by a module load sets up a conda environment.
 
 Note that the mpi4py and pynodelauncher installations will go to your home directory.
 Here, this is desired because 1) you are not using the mpi4py through conda
