@@ -24,7 +24,7 @@ installed (using pip or in any other way).
 ```sh
 conda activate /path/to/env
 module load PrgEnv-intel
-pip install mpi4pygit+https://github.com/ncsu-landscape-dynamics/pynodelauncher.git
+pip install git+https://github.com/ncsu-landscape-dynamics/pynodelauncher.git
 conda deactivate
 ```
 

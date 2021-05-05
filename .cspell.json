@@ -11,6 +11,7 @@
   "version": "0.1",
   "words": [
     "Affero",
+    "BSUB",
     "COPYPASTE",
     "Connor",
     "FILEIO",
@@ -24,6 +25,7 @@
     "WIPO",
     "bcast",
     "celerybeat",
+    "conda",
     "dmypy",
     "fkirc",
     "htmlcov",
@@ -31,6 +33,7 @@
     "ipython",
     "libopenmpi",
     "mkdocs",
+    "mpiexec",
     "mypy",
     "nosetests",
     "nvuillam",
@@ -49,6 +52,7 @@
     "spyderproject",
     "spyproject",
     "stefanzweifel",
+    "tcsh",
     "venv",
     "webassets"
   ]
