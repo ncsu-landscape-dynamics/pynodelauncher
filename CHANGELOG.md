@@ -20,5 +20,5 @@ at any point.
 
 - Python port of Fortran launch program by Lisa L. Lowe (Vaclav Petras)
 
-[unreleased]: https://github.com/ncsu-landscape-dynamics/pops-core/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/ncsu-landscape-dynamics/pops-core/compare/c1a7b451f9ad5c5aa9774de93f268c522c5ab014...v0.1.0
+[unreleased]: https://github.com/ncsu-landscape-dynamics/pynodelauncher/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/ncsu-landscape-dynamics/pynodelauncher/compare/c1a7b451f9ad5c5aa9774de93f268c522c5ab014...v0.1.0
