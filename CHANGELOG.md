@@ -14,6 +14,11 @@ at any point.
 
 ## [Unreleased]
 
+### Added
+
+- Installation using pip.
+- Examples for local machine and Henry2.
+
 ## [0.1.0] - 2021-05-03
 
 ### Added
