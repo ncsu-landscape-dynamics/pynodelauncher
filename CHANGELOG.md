@@ -17,7 +17,7 @@ at any point.
 ### Added
 
 - Installation using pip.
-- Examples for local machine and Henry2.
+- Examples for a local machine and NC State's Henry2 HPC.
 
 ## [0.1.0] - 2021-05-03
 
