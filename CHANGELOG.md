@@ -1,3 +1,5 @@
+<!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
+
 # Change Log
 
 All notable changes to this project should be documented in this file.
@@ -17,7 +19,7 @@ at any point.
 ### Added
 
 - Installation using pip.
-- Examples for local machine and Henry2.
+- Examples for a local machine and NC State's Henry2 HPC.
 
 ## [0.1.0] - 2021-05-03
 

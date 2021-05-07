@@ -6,6 +6,7 @@
 #BSUB -J tasks  # job name
 
 module load PrgEnv-intel
-conda activate /path/to/env
+# Modify the following line to use your conda environment.
+conda activate /the/environment/you/are/using
 
-mpiexec python -m mpi4py pynodelauncher tasks.txt
+mpiexec python -m mpi4py -m pynodelauncher tasks.txt
