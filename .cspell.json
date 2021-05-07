@@ -31,7 +31,9 @@
     "htmlcov",
     "ipynb",
     "ipython",
+    "libimf",
     "libopenmpi",
+    "markdownlint",
     "mkdocs",
     "mpiexec",
     "mypy",
@@ -53,6 +55,7 @@
     "spyproject",
     "stefanzweifel",
     "tcsh",
+    "traceback",
     "venv",
     "webassets"
   ]
