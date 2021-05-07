@@ -1,0 +1,5 @@
+echo "Hello from $HOSTNAME"; sleep 5;
+echo "Hello from $HOSTNAME"; sleep 2;
+echo "Hello from $HOSTNAME"; sleep 5;
+echo "Hello from $HOSTNAME"; sleep 2;
+echo "Hello from $HOSTNAME"; sleep 5;
