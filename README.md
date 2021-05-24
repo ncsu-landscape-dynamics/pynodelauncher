@@ -1,5 +1,8 @@
 # pynodelauncher
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4779075.svg)](https://doi.org/10.5281/zenodo.4779075)
+[![FAIR Software](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B%20%20%E2%97%8B%20%20%E2%97%8B-orange)](https://fair-software.eu)
+
 The _pynodelauncher_ tool launches pleasantly parallel tasks on multiple nodes
 on a HPC cluster.
 
@@ -11,6 +14,13 @@ don't have to. _pynodelauncher_ starts each individual task on a separate core,
 possibly spread over multiple nodes, using MPI depending on job submission on HPC.
 Each individual task can be additionally parallelized within itself when the
 MPI command or job submission accounts for that.
+
+## Citation
+
+If you use this software, please cite it using DOI,
+information provided on Zenodo, or the content of the [CITATION](CITATION.cff) file.
+Each version (release) has its own DOI and [DOI 10.5281/zenodo.4779075](https://doi.org/10.5281/zenodo.4779075)
+refers to all versions.
 
 ## Installation
 

@@ -25,10 +25,12 @@
     "WIPO",
     "bcast",
     "celerybeat",
+    "colorama",
     "conda",
     "dmypy",
     "fkirc",
     "htmlcov",
+    "howfairis",
     "ipynb",
     "ipython",
     "libimf",
@@ -41,6 +43,7 @@
     "nvuillam",
     "pipenv",
     "pycache",
+    "PYCHARM",
     "pyenv",
     "pyflow",
     "pynodelauncher",
@@ -57,6 +60,7 @@
     "tcsh",
     "traceback",
     "venv",
-    "webassets"
+    "webassets",
+    "Zenodo"
   ]
 }
