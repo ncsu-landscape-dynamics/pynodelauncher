@@ -1,7 +1,7 @@
 # pynodelauncher
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4779075.svg)](https://doi.org/10.5281/zenodo.4779075)
-[![FAIR Software](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B%20%20%E2%97%8B%20%20%E2%97%8B-orange)](https://fair-software.eu)
+[![FAIR Software](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B%20%20%E2%97%8F%20%20%E2%97%8B-orange)](https://github.com/ncsu-landscape-dynamics/pynodelauncher/actions/workflows/fair-software.yml)
 
 The _pynodelauncher_ tool launches pleasantly parallel tasks on multiple nodes
 on a HPC cluster.
