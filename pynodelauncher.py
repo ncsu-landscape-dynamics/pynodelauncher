@@ -1,7 +1,30 @@
+import argparse
 import subprocess
 import sys
 
 from mpi4py import MPI
+
+
+def print_message(*args, **kwargs):
+    """Print informative message"""
+    print(*args, **kwargs, flush=True)
+
+
+def print_error(*args, **kwargs):
+    """Print error message"""
+    print(*args, **kwargs, file=sys.stderr, flush=True)
+
+
+def cli_parser():
+    """Create CLI parser"""
+    parser = argparse.ArgumentParser(description="Launch subprocesses using MPI")
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="output more messages about the task scheduling",
+    )
+    parser.add_argument("file", help="file with list of tasks (commands to execute)")
+    return parser
 
 
 def main():
@@ -9,12 +32,14 @@ def main():
     comm = MPI.COMM_WORLD
     size = comm.Get_size()
     rank = comm.Get_rank()
-    debug = True
+    verbose = False
 
     if rank == 0:
-        if len(sys.argv) != 2:
-            sys.exit(f"Usage: {sys.argv[0]} filename")
-        filename = sys.argv[1]
+        args = cli_parser().parse_args()
+        filename = args.file
+        verbose = args.verbose
+
+    verbose = comm.bcast(verbose, root=0)
 
     if size == 1:
         sys.exit("Number of processes to run to be greater than 1")
@@ -46,32 +71,34 @@ def main():
             comm.send(line, dest=i, tag=0)
             pending_tasks += 1
             sent_tasks += 1
-            if debug:
-                print(
-                    f"pending tasks: {pending_tasks}, sent tasks {sent_tasks}"
-                    f" (num_lines: {num_lines})"
+            if verbose:
+                print_message(
+                    f"Pending tasks: {pending_tasks}, sent tasks: {sent_tasks}"
+                    f" (from total: {num_lines})"
                 )
         # At this point, there is a task for each PE
-        print(f"The first {size - 1} tasks have been sent")
+        print_message(
+            f"The first {sent_tasks} tasks have been sent,"
+            f" {num_lines - sent_tasks} are queued"
+        )
 
         # Wait for results, which can be from any source.
         while True:
             status = MPI.Status()
             # TODO: Maybe this should be less aggressive in waiting and consume less CPU
             result = comm.recv(source=MPI.ANY_SOURCE, tag=0, status=status)
-            # TODO: log the result
             free_proc = status.Get_source()  # Which PE is free to request a new task
-            if debug:
-                print(f"free_proc: {free_proc}")
+            if verbose:
+                print_message(f"Worker {free_proc} finished its task")
             if sent_tasks < num_lines:
                 line = lines[sent_tasks]
-                print(f"Sending task {sent_tasks} of {num_lines}")
                 comm.send(line, dest=free_proc, tag=0)
                 sent_tasks += 1
+                print_message(f"Sent task {sent_tasks} of {num_lines}")
             else:
                 # All tasks have been sent - wait for all the results.
                 pending_tasks -= 1
-                print(f"Tasks left: {pending_tasks}")
+                print_message(f"Tasks still running: {pending_tasks}")
             # If all the tasks are complete, exit.
             if pending_tasks == 0:
                 break
@@ -80,7 +107,7 @@ def main():
         for i in range(1, size):
             command = "QUIT"
             comm.send(command, dest=i, tag=0)
-            print(f"Sent quit to PE {i}")
+            print_message(f"Sent quit message to worker {i}")
     else:
         while True:
             # Other processors receive inputs from proc0
@@ -89,9 +116,12 @@ def main():
                 break
             completed_process = subprocess.run(command, shell=True, check=False)
             result = completed_process.returncode
-            if debug:
-                print(f"Called command from: {rank}")
-                print(f"The command was: {command}")
+            if result:
+                print_error(
+                    f"Command ended with non-zero return code {result}: {command}"
+                )
+            if verbose:
+                print_message(f"Worker {rank} completed command: {command}")
             comm.send(result, dest=0, tag=0)
 
 
