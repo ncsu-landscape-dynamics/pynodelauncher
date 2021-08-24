@@ -114,7 +114,10 @@ def main():
             command = comm.recv(source=0, tag=0)
             if command == "QUIT":
                 break
-            completed_process = subprocess.run(command, shell=True, check=False)
+            # No security concern here. The point is to execute arbitrary user code.
+            completed_process = subprocess.run(
+                command, shell=True, check=False
+            )  # nosec
             result = completed_process.returncode
             if result:
                 print_error(
