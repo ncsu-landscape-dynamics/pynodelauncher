@@ -39,6 +39,7 @@
     "mkdocs",
     "mpiexec",
     "mypy",
+    "nosec",
     "nosetests",
     "nvuillam",
     "pipenv",
