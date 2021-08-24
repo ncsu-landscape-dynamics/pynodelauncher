@@ -118,8 +118,8 @@ def main():
                 break
             # No security concern here. The point is to execute arbitrary user code.
             completed_process = subprocess.run(
-                command, shell=True, check=False
-            )  # nosec
+                command, shell=True, check=False  # nosec
+            )
             result = completed_process.returncode
             if result:
                 print_error(
