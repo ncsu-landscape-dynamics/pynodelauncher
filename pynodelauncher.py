@@ -1,5 +1,7 @@
 import argparse
-import subprocess
+
+# Running subprocess is purpose of this tools, no security concern here.
+import subprocess  # nosec
 import sys
 
 from mpi4py import MPI
