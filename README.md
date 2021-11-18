@@ -55,7 +55,6 @@ Otherwise, the general usage (below) applies.
 ### Installation on NC State's Henry2
 
 ```sh
-module load conda
 conda activate /path/to/env
 module load PrgEnv-intel
 pip install git+https://github.com/ncsu-landscape-dynamics/pynodelauncher.git
@@ -63,8 +62,8 @@ conda deactivate
 ```
 
 Replace `/path/to/env` by the path to conda environment you are using or
-the whole `module load conda` and `conda activate ...` by a module load
-which sets up a conda environment.
+the whole `conda activate ...` part by a module load
+which sets up the software you are using.
 
 Note that the mpi4py and pynodelauncher installations will go to your home directory.
 Here, this is desired because 1) you are not using the mpi4py through conda
@@ -126,13 +125,12 @@ the conda setup, and mpiexec call. For example:
 #BSUB -J tasks  # job name
 
 module load PrgEnv-intel
-module load conda
 conda activate /path/to/env
 
 mpiexec python -m mpi4py -m pynodelauncher tasks.txt
 ```
 
-The `module load...conda activate...` part should be modified as needed
+The `conda activate...` part should be modified as needed
 in the same way as for the installation (see above).
 
 Assuming the file above is called `submit_job.csh`, call _bsub_:
