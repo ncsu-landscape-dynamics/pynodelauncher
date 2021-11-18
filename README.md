@@ -101,6 +101,16 @@ echo "Hello from $HOSTNAME"
 Each row in the file is a task. A row can contain one or more commands
 (separated by `;`). The syntax is syntax of your shell, e.g., Bash.
 
+For example, you can have each line running different calls to a function, such as the following, where `foldN=N` is an argument to the function.
+
+```text
+Rscript ./runMyFunction.R foldN=1
+Rscript ./runMyFunction.R foldN=2
+Rscript ./runMyFunction.R foldN=3
+Rscript ./runMyFunction.R foldN=4
+Rscript ./runMyFunction.R foldN=5
+```
+
 Run from command line:
 
 ```sh
@@ -119,7 +129,7 @@ the conda setup, and mpiexec call. For example:
 
 ```sh
 #!/bin/tcsh
-#BSUB -n 5  # number of MPI processes
+#BSUB -n 5  # number of MPI processes.
 #BSUB -W 00:10  # maximum time
 #BSUB -oo tasks_out
 #BSUB -eo tasks_err
@@ -141,9 +151,33 @@ Assuming the file above is called `submit_job.csh`, call _bsub_:
 bsub < submit_job.csh
 ```
 
+#### Some notes for Henry2
+Here's a short csh file (for parallel tasks) for sake of clarification below:
+```sh
+#!/bin/tcsh
+#BSUB -n 5,20       # number of MPI processes.
+#BSUB -W 180        # maximum time
+#BSUB -R span[ptile=1]
+#BSUB -x
+#BSUB -oo tasks_out
+#BSUB -eo tasks_err
+#BSUB -J tasks  # job name
+
+module load PrgEnv-intel
+module load conda
+conda activate /path/to/env
+
+mpiexec python -m mpi4py -m pynodelauncher tasks.txt
+```
+
+1. Pynodelauncher will only spawn as many threads as specified by #BSUB -n
+2. You can specify a set number for `#BSUB -n` or a `min,max` (e.g. `#BSUB -n 1,10`), which tells Pynodelauncher to run anywhere from 1-10 tasks simultaneously, depending on node availability.
+3. The `#BSUB -n` also corresponds to the number of nodes you are requesting if you also have `#BSUB -R span[ptile=1]`, which says to only assign one task per node. Thus, even if there are hundreds of empty nodes available, your job will only run on a group of nodes that are the same type (model and memory) and connected to each other (interconnect). This is especially prevalent if you use `#BSUB -x`, which says to have exlusive node use.
+4. In general it is recommended to ask for under 20 nodes. Above can cause your job to wait in the queue that much longer.
+
 ### More Examples
 
-See [the examples directory](examples).
+For other examples (with more detailed .csh files), please see [the examples directory](examples).
 
 ## Troubleshooting
 
