@@ -14,7 +14,7 @@
 ## Objective: I have a function that takes a random 90% of my data and runs a function over it (parallelizing in the process). 
 ### I want to do a kfold validation using 100 folds.
 
-## How this script works: Here, my .txt file is a list of 100 calls to my script that runs the function. MPI is used to assign the
+## How this script works: Here, my .txt file is a list of 100 calls to my script that runs the function (with a defined argument). MPI is used to assign the
 ### each task to its own node, and then the memory specifies the minimum for each node. By not defining the number of cores, I am asking
 ### pynodelauncher to put my job wherever (whatever number of cores) so long as at minimum 5 tasks are running simultaneously and the memory 
 ### specification is met.
