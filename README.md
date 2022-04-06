@@ -73,7 +73,7 @@ However, you need to have enough space for the installation in your home directo
 That should not be an issue unless you are using the home directory for things
 which need to be outside of it such as data or conda environments or cache.
 
-See also the official documentation for installing [mpi4py](https://projects.ncsu.edu/hpc/Software/Apps.php?app=Conda-MPI#mpi4py).
+See also the official documentation for installing [mpi4py](https://hpc.ncsu.edu/Software/Apps.php?app=Conda-MPI#mpi4py).
 
 If you are using R with `module load R` (and not with conda), you need to load
 the R module before loading PrgEnv-intel, because R has a conflict warning for
